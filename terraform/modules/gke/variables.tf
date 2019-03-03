@@ -1,70 +1,30 @@
 variable "cluster_name" {
-  default = "kubernetes-cluster"
+  default = "tgke"
 }
 
-variable "node_count" {
-  default = 1
+variable "kubernetes_version" {
+  default = "1.11.7-gke.4"
 }
 
-variable "max_node_count" {
-  default = 3
+variable "master_ipv4_cidr_block" {}
+
+variable "enable_private_nodes" {}
+
+variable "regional" {}
+
+variable "master_authorized_networks_config_cidr_blocks" {
+  type    = "list"
+  default = []
 }
 
-variable "min_node_count" {
-  default = 1
+variable "daily_maintenance_window_start_time" {}
+
+variable "gcp" {
+  type    = "map"
+  default = {}
 }
 
-variable "admin_username" {
-  default = "admin"
-}
-
-variable "admin_password" {
-  default = "00000000000000000"
-}
-
-variable "machine_type" {
-  default = "n1-standard-1"
-}
-
-variable "disk_size_gb" {
-  default = "100"
-}
-
-variable "master_zone" {
-  default = "europe-west1-b"
-}
-
-variable "additional_zones" {
-  default = [
-    "europe-west1-c",
-    "europe-west1-d",
-  ]
-}
-
-variable "min_master_version" {
-  default = "1.9.4-gke.1"
-}
-
-variable "initial_default_pool_name" {
-  default = "unused-default-pool"
-}
-
-variable "default_pool_name" {
-  default = "default-pool"
-}
-
-variable "daily_maintenance_window_start_time" {
-  default = "00:00"
-}
-
-variable "project" {
-  default = "gcp-project"
-}
-
-variable "env" {
-  default = "sample"
-}
-
-variable "kubernetes_network_name" {
-  default = "kubernetes-network"
+variable "node-pools" {
+  type    = "list"
+  default = []
 }
